@@ -1,0 +1,1085 @@
+==7397== Memcheck, a memory error detector
+==7397== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==7397== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==7397== Command: /home/meggie/文档/leveldb-multimem/build/db_bench --threads=1 --benchmarks=loaduniform100_20000k --write_buffer_size=4
+==7397== Parent PID: 3647
+==7397== 
+--7397-- 
+--7397-- Valgrind options:
+--7397--    --verbose
+--7397--    --log-file=valgrind
+--7397--    --leak-check=full
+--7397--    --show-leak-kinds=all
+--7397-- Contents of /proc/version:
+--7397--   Linux version 4.17.19 (root@meggie-All-Series) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4)) #1 SMP Fri Apr 12 16:50:45 CST 2019
+--7397-- 
+--7397-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
+--7397-- Page sizes: currently 4096, max supported 4096
+--7397-- Valgrind library directory: /usr/lib/valgrind
+--7397-- Reading syms from /home/meggie/文档/leveldb-multimem/build/db_bench
+--7397-- Reading syms from /lib/x86_64-linux-gnu/ld-2.23.so
+--7397--   Considering /lib/x86_64-linux-gnu/ld-2.23.so ..
+--7397--   .. CRC mismatch (computed aa979a42 wanted 9019bbb7)
+--7397--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.23.so ..
+--7397--   .. CRC is valid
+--7397-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--7397--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--7397--   .. CRC mismatch (computed eea41ea9 wanted 2009db78)
+--7397--    object doesn't have a symbol table
+--7397--    object doesn't have a dynamic symbol table
+--7397-- Scheduler: using generic scheduler lock implementation.
+--7397-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==7397== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-7397-by-root-on-???
+==7397== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-7397-by-root-on-???
+==7397== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-7397-by-root-on-???
+==7397== 
+==7397== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==7397== don't want to do, unless you know exactly what you're doing,
+==7397== or are doing some strange experiment):
+==7397==   /usr/lib/valgrind/../../bin/vgdb --pid=7397 ...command...
+==7397== 
+==7397== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==7397==   /path/to/gdb /home/meggie/文档/leveldb-multimem/build/db_bench
+==7397== and then give GDB the following command
+==7397==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=7397
+==7397== --pid is optional if only one valgrind process is running
+==7397== 
+--7397-- REDIR: 0x401cfd0 (ld-linux-x86-64.so.2:strlen) redirected to 0x3809e181 (???)
+--7397-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--7397--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--7397--   .. CRC mismatch (computed 2567ccf6 wanted 49420590)
+--7397--    object doesn't have a symbol table
+--7397-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--7397--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--7397--   .. CRC mismatch (computed 0e27c9a8 wanted ac585421)
+--7397--    object doesn't have a symbol table
+==7397== WARNING: new redirection conflicts with existing -- ignoring it
+--7397--     old: 0x0401cfd0 (strlen              ) R-> (0000.0) 0x3809e181 ???
+--7397--     new: 0x0401cfd0 (strlen              ) R-> (2007.0) 0x04c31020 strlen
+--7397-- REDIR: 0x401b920 (ld-linux-x86-64.so.2:index) redirected to 0x4c30bc0 (index)
+--7397-- REDIR: 0x401bb40 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c320d0 (strcmp)
+--7397-- REDIR: 0x401dd30 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c35270 (mempcpy)
+--7397-- Reading syms from /lib/x86_64-linux-gnu/libpthread-2.23.so
+--7397--   Considering /usr/lib/debug/.build-id/ce/17e023542265fc11d9bc8f534bb4f070493d30.debug ..
+--7397--   .. build-id is valid
+--7397-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+--7397--   Considering /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21 ..
+--7397--   .. CRC mismatch (computed b2e7dc97 wanted c9833bdf)
+--7397--    object doesn't have a symbol table
+--7397-- Reading syms from /lib/x86_64-linux-gnu/libm-2.23.so
+--7397--   Considering /lib/x86_64-linux-gnu/libm-2.23.so ..
+--7397--   .. CRC mismatch (computed e8c3647b wanted c3efddac)
+--7397--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libm-2.23.so ..
+--7397--   .. CRC is valid
+--7397-- Reading syms from /lib/x86_64-linux-gnu/libgcc_s.so.1
+--7397--   Considering /lib/x86_64-linux-gnu/libgcc_s.so.1 ..
+--7397--   .. CRC mismatch (computed b9a68419 wanted 29d51b00)
+--7397--    object doesn't have a symbol table
+--7397-- Reading syms from /lib/x86_64-linux-gnu/libc-2.23.so
+--7397--   Considering /lib/x86_64-linux-gnu/libc-2.23.so ..
+--7397--   .. CRC mismatch (computed 7a8ee3e4 wanted a5190ac4)
+--7397--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.23.so ..
+--7397--   .. CRC is valid
+--7397-- REDIR: 0x5987a00 (libc.so.6:strcasecmp) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--7397-- REDIR: 0x5983280 (libc.so.6:strcspn) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--7397-- REDIR: 0x5989cf0 (libc.so.6:strncasecmp) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--7397-- REDIR: 0x59856f0 (libc.so.6:strpbrk) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--7397-- REDIR: 0x5985a80 (libc.so.6:strspn) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--7397-- REDIR: 0x598714b (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--7397-- REDIR: 0x5985400 (libc.so.6:rindex) redirected to 0x4c308a0 (rindex)
+--7397-- REDIR: 0x597c130 (libc.so.6:malloc) redirected to 0x4c2db20 (malloc)
+--7397-- REDIR: 0x5983720 (libc.so.6:strlen) redirected to 0x4c30f60 (strlen)
+--7397-- REDIR: 0x5986bf0 (libc.so.6:__GI_memcmp) redirected to 0x4c33b90 (__GI_memcmp)
+--7397-- REDIR: 0x5981cd0 (libc.so.6:strcmp) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--7397-- REDIR: 0x5997570 (libc.so.6:__strcmp_sse2_unaligned) redirected to 0x4c31f90 (strcmp)
+--7397-- REDIR: 0x50e4e60 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x4c2e080 (operator new(unsigned long))
+--7397-- REDIR: 0x50e2f10 (libstdc++.so.6:operator delete(void*)) redirected to 0x4c2f1e0 (operator delete(void*))
+--7397-- REDIR: 0x598e550 (libc.so.6:rawmemchr) redirected to 0x4c34dd0 (rawmemchr)
+--7397-- REDIR: 0x5986bb0 (libc.so.6:bcmp) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--7397-- REDIR: 0x5a66430 (libc.so.6:__memcmp_sse4_1) redirected to 0x4c33cd0 (__memcmp_sse4_1)
+--7397-- REDIR: 0x5983b70 (libc.so.6:__GI_strncmp) redirected to 0x4c31710 (__GI_strncmp)
+--7397-- REDIR: 0x598c3f0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--7397-- REDIR: 0x5a45ea0 (libc.so.6:__memcpy_avx_unaligned) redirected to 0x4c324a0 (memcpy@@GLIBC_2.14)
+--7397-- REDIR: 0x598c470 (libc.so.6:__GI_memcpy) redirected to 0x4c32b00 (__GI_memcpy)
+--7397-- REDIR: 0x5987890 (libc.so.6:__GI_stpcpy) redirected to 0x4c33f80 (__GI_stpcpy)
+--7397-- REDIR: 0x59873b0 (libc.so.6:__GI_mempcpy) redirected to 0x4c34fa0 (__GI_mempcpy)
+--7397-- REDIR: 0x50e4f10 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x4c2e7a0 (operator new[](unsigned long))
+--7397-- REDIR: 0x50e2f40 (libstdc++.so.6:operator delete[](void*)) redirected to 0x4c2f6e0 (operator delete[](void*))
+--7397-- REDIR: 0x5986ff0 (libc.so.6:__GI_memmove) redirected to 0x4c347e0 (__GI_memmove)
+--7397-- REDIR: 0x597c4f0 (libc.so.6:free) redirected to 0x4c2ed80 (free)
+--7397-- REDIR: 0x59871b0 (libc.so.6:memset) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--7397-- REDIR: 0x5a6a970 (libc.so.6:__memset_avx2) redirected to 0x4c344c0 (memset)
+--7397-- REDIR: 0x598e760 (libc.so.6:strchrnul) redirected to 0x4c34da0 (strchrnul)
+--7397-- REDIR: 0x5986060 (libc.so.6:__GI_strstr) redirected to 0x4c354d0 (__strstr_sse2)
+--7397-- REDIR: 0x59838c0 (libc.so.6:strnlen) redirected to 0x4c30ee0 (strnlen)
+--7397-- REDIR: 0x5986860 (libc.so.6:memchr) redirected to 0x4c32170 (memchr)
+--7397-- REDIR: 0x5981a80 (libc.so.6:index) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--7397-- REDIR: 0x5981ab0 (libc.so.6:__GI_strchr) redirected to 0x4c30a00 (__GI_strchr)
+--7397-- REDIR: 0x597cd10 (libc.so.6:calloc) redirected to 0x4c2faa0 (calloc)
+==7397== Warning: set address range perms: large range [0x395d8000, 0xd431a000) (defined)
+--7397-- REDIR: 0x5a459b0 (libc.so.6:__memmove_avx_unaligned) redirected to 0x4c32230 (memcpy@GLIBC_2.2.5)
+==7397== 
+==7397== Process terminating with default action of signal 2 (SIGINT)
+==7397==    at 0x4E47360: pthread_cond_wait@@GLIBC_2.3.2 (pthread_cond_wait.S:185)
+==7397==    by 0x510A91B: std::condition_variable::wait(std::unique_lock<std::mutex>&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x40CEFD: leveldb::port::CondVar::Wait() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x407E2F: leveldb::Benchmark::RunBenchmark(int, leveldb::Slice, void (leveldb::Benchmark::*)(leveldb::(anonymous namespace)::ThreadState*)) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F788: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== HEAP SUMMARY:
+==7397==     in use at exit: 10,780,789 bytes in 2,720 blocks
+==7397==   total heap usage: 144,233 allocs, 141,513 frees, 31,024,474 bytes allocated
+==7397== 
+==7397== Searching for pointers to 2,720 not-freed blocks
+==7397== Checked 2,793,097,224 bytes
+==7397== 
+==7397== 8 bytes in 1 blocks are still reachable in loss record 1 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x44FEDB: __gnu_cxx::new_allocator<char*>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44FDB7: std::allocator_traits<std::allocator<char*> >::allocate(std::allocator<char*>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44FC85: std::_Vector_base<char*, std::allocator<char*> >::_M_allocate(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F8C7: void std::vector<char*, std::allocator<char*> >::_M_emplace_back_aux<char* const&>(char* const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F77E: std::vector<char*, std::allocator<char*> >::push_back(char* const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F625: leveldb::Arena::AllocateNewBlock(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F4AB: leveldb::Arena::AllocateFallback(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F5AF: leveldb::Arena::AllocateAligned(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x436396: leveldb::SkipList<char const*, leveldb::MemTable::KeyComparator>::NewNode(char const* const&, int) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x435F0C: leveldb::SkipList<char const*, leveldb::MemTable::KeyComparator>::SkipList(leveldb::MemTable::KeyComparator, leveldb::Arena*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x435370: leveldb::MemTable::MemTable(leveldb::InternalKeyComparator const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 16 bytes in 1 blocks are still reachable in loss record 2 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x456CD2: leveldb::(anonymous namespace)::PosixEnv::NewLogger(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::Logger**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x411D54: leveldb::SanitizeOptions(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::InternalKeyComparator const*, leveldb::InternalFilterPolicy const*, leveldb::Options const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x411FBE: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 16 bytes in 1 blocks are still reachable in loss record 3 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x448B15: std::_Function_base::_Base_manager<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}>::_M_clone(std::_Any_data&, std::_Function_base::_Base_manager<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}> const&, std::integral_constant<bool, false>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x448935: std::_Function_base::_Base_manager<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}>::_M_manager(std::_Any_data&, std::_Function_base::_Base_manager<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}> const&, std::_Manager_operation) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4222E4: std::function<void ()>::function(std::function<void ()> const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4202FF: std::function<void ()>::operator=(std::function<void ()> const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41E61B: leveldb::ThreadPool::next_job() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41E431: leveldb::ThreadPool::Task() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41E6E2: leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1}::operator()() const (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x431191: void std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()>::_M_invoke<>(std::_Index_tuple<>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x430D67: std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()>::operator()() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x430B03: std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >::_M_run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x510FC7F: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397== 
+==7397== 17 bytes in 1 blocks are still reachable in loss record 4 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x517896C: void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x51789CE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x41201B: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 17 bytes in 1 blocks are still reachable in loss record 5 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x517896C: void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x51789CE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x4369F9: leveldb::TableCache::TableCache(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::Options const&, int) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41205B: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 17 bytes in 1 blocks are still reachable in loss record 6 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x517896C: void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x51789CE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x43B260: leveldb::VersionSet::VersionSet(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::Options const*, leveldb::TableCache*, leveldb::InternalKeyComparator const*, leveldb::Timer*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x412255: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 17 bytes in 1 blocks are still reachable in loss record 7 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5178AEC: void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x5178CD8: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::substr(unsigned long, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x4559A6: leveldb::(anonymous namespace)::PosixWritableFile::Dirname(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4550B0: leveldb::(anonymous namespace)::PosixWritableFile::PosixWritableFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45621C: leveldb::(anonymous namespace)::PosixEnv::NewWritableFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::WritableFile**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AF1D: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 17 bytes in 1 blocks are still reachable in loss record 8 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5178AEC: void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x5178CD8: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::substr(unsigned long, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x4559A6: leveldb::(anonymous namespace)::PosixWritableFile::Dirname(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4550B0: leveldb::(anonymous namespace)::PosixWritableFile::PosixWritableFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45621C: leveldb::(anonymous namespace)::PosixEnv::NewWritableFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::WritableFile**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x43B8CD: leveldb::VersionSet::LogAndApply(leveldb::VersionEdit*, leveldb::port::Mutex*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41B108: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 22 bytes in 1 blocks are still reachable in loss record 9 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x517896C: void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x51789CE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x45CAF5: _ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEE9constructIS7_IRKS7_EEEvPT_DpOT0_ (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45C8C3: _ZNSt16allocator_traitsISaISt13_Rb_tree_nodeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEEE9constructIS6_IRKS6_EEEvRS8_PT_DpOT0_ (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45C634: void std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_construct_node<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(std::_Rb_tree_node<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45C2C9: std::_Rb_tree_node<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >* std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_create_node<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45BDBE: std::_Rb_tree_node<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >* std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_Alloc_node::operator()<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45B541: std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_insert_<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_Alloc_node>(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_Alloc_node&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45AB6A: std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, bool> std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_insert_unique<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45A6E5: std::set<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x455C90: leveldb::(anonymous namespace)::PosixLockTable::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 22 bytes in 1 blocks are still reachable in loss record 10 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x517896C: void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x51789CE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x456968: leveldb::(anonymous namespace)::PosixEnv::LockFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::FileLock**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41348D: leveldb::DBImpl::Recover(leveldb::VersionEdit*, bool*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE6A: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 24 bytes in 1 blocks are still reachable in loss record 11 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x450495: leveldb::NewBloomFilterPolicy(int) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40D892: leveldb::Benchmark::Benchmark() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C94E: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 28 bytes in 1 blocks are still reachable in loss record 12 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x517896C: void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x51789CE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x4561FB: leveldb::(anonymous namespace)::PosixEnv::NewWritableFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::WritableFile**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AF1D: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 31 bytes in 1 blocks are still reachable in loss record 13 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5176498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x5177832: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x40C92C: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 31 bytes in 1 blocks are still reachable in loss record 14 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5176498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x517700A: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x41D47F: leveldb::Timer::init() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41D39C: leveldb::Timer::Timer() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x411F43: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 31 bytes in 1 blocks are still reachable in loss record 15 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5176498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x517700A: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x41D496: leveldb::Timer::init() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41D39C: leveldb::Timer::Timer() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x411F43: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 31 bytes in 1 blocks are still reachable in loss record 16 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5176498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x517700A: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x41D4AD: leveldb::Timer::init() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41D39C: leveldb::Timer::Timer() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x411F43: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 31 bytes in 1 blocks are still reachable in loss record 17 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5176498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x517700A: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x406D8B: leveldb::(anonymous namespace)::WorkloadGenerator::getData() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x406EFC: leveldb::(anonymous namespace)::WorkloadGenerator::getRequest(char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40BE2F: leveldb::Benchmark::CustomedWorkloadWrite(leveldb::(anonymous namespace)::ThreadState*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x409EC6: leveldb::Benchmark::Loaduniform100_20000k(leveldb::(anonymous namespace)::ThreadState*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F956: leveldb::Benchmark::ThreadBody(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D3A5: void std::_Bind_simple<void (*(void*))(void*)>::_M_invoke<0ul>(std::_Index_tuple<0ul>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D2AF: std::_Bind_simple<void (*(void*))(void*)>::operator()() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D23F: std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >::_M_run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x510FC7F: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397== 
+==7397== 32 bytes in 1 blocks are still reachable in loss record 18 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x41AFA1: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 32 bytes in 1 blocks are still reachable in loss record 19 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x43B912: leveldb::VersionSet::LogAndApply(leveldb::VersionEdit*, leveldb::port::Mutex*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41B108: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 32 bytes in 2 blocks are still reachable in loss record 20 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x448A5C: std::_Function_base::_Base_manager<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}>::_M_init_functor(std::_Any_data&, {lambda()#1}&&, std::integral_constant<bool, false>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x448863: std::_Function_base::_Base_manager<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}>::_M_init_functor(std::_Any_data&, {lambda()#1}&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44875A: std::function<void ()>::function<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}, void, void>(std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x448511: std::_List_node<std::function<void ()> >::_List_node<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}>(std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4481DB: void __gnu_cxx::new_allocator<std::_List_node<std::function<void ()> > >::construct<std::_List_node<std::function<void ()> ><std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}> >(std::_List_node<std::function<void ()> ><std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}>*, (leveldb::WriteBatchInternal::batch_struct*&&)...) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x447E64: std::_List_node<std::function<void ()> >* std::__cxx11::list<std::function<void ()>, std::allocator<std::function<void ()> > >::_M_create_node<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}>(std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x447AC7: void std::__cxx11::list<std::function<void ()>, std::allocator<std::function<void ()> > >::_M_insert<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}>(std::_List_iterator<std::function<void ()> >, std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4476F4: void std::__cxx11::list<std::function<void ()>, std::allocator<std::function<void ()> > >::emplace_back<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}>(std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44742E: std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x446D36: leveldb::WriteBatchInternal::InsertInto(leveldb::MultiWriteBatch const*, std::vector<leveldb::MemTable*, std::allocator<leveldb::MemTable*> >&, leveldb::ThreadPool*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x418B05: leveldb::DBImpl::Write(leveldb::WriteOptions const&, bool, leveldb::MultiWriteBatch*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 33 bytes in 1 blocks are still reachable in loss record 21 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x517896C: void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x51789CE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x4561FB: leveldb::(anonymous namespace)::PosixEnv::NewWritableFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::WritableFile**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x43B8CD: leveldb::VersionSet::LogAndApply(leveldb::VersionEdit*, leveldb::port::Mutex*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41B108: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 35 bytes in 1 blocks are still reachable in loss record 22 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5178AEC: void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x5178C4B: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x409E90: leveldb::Benchmark::Loaduniform100_20000k(leveldb::(anonymous namespace)::ThreadState*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F956: leveldb::Benchmark::ThreadBody(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D3A5: void std::_Bind_simple<void (*(void*))(void*)>::_M_invoke<0ul>(std::_Index_tuple<0ul>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D2AF: std::_Bind_simple<void (*(void*))(void*)>::operator()() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D23F: std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >::_M_run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x510FC7F: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==7397==    by 0x59FF41C: clone (clone.S:109)
+==7397== 
+==7397== 35 bytes in 1 blocks are still reachable in loss record 23 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x517896C: void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x51789CE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x409EAF: leveldb::Benchmark::Loaduniform100_20000k(leveldb::(anonymous namespace)::ThreadState*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F956: leveldb::Benchmark::ThreadBody(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D3A5: void std::_Bind_simple<void (*(void*))(void*)>::_M_invoke<0ul>(std::_Index_tuple<0ul>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D2AF: std::_Bind_simple<void (*(void*))(void*)>::operator()() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D23F: std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >::_M_run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x510FC7F: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==7397==    by 0x59FF41C: clone (clone.S:109)
+==7397== 
+==7397== 40 bytes in 1 blocks are still reachable in loss record 24 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x4121B5: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 40 bytes in 1 blocks are still reachable in loss record 25 of 80
+==7397==    at 0x4C2E80F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x407C3C: leveldb::Benchmark::RunBenchmark(int, leveldb::Slice, void (leveldb::Benchmark::*)(leveldb::(anonymous namespace)::ThreadState*)) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F788: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 48 bytes in 1 blocks are still reachable in loss record 26 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x456976: leveldb::(anonymous namespace)::PosixEnv::LockFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::FileLock**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41348D: leveldb::DBImpl::Recover(leveldb::VersionEdit*, bool*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE6A: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 48 bytes in 3 blocks are still reachable in loss record 27 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x430126: std::unique_ptr<std::__future_base::_Result<void>, std::__future_base::_Result_base::_Deleter> std::__future_base::_S_allocate_result<void, int>(std::allocator<int> const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x43008A: std::__future_base::_Task_state_base<void ()>::_Task_state_base<std::allocator<int> >(std::allocator<int> const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4496F8: std::__future_base::_Task_state<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int>, void ()>::_Task_state<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)> >(std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&&, std::allocator<int> const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x449669: void __gnu_cxx::new_allocator<int>::construct<std::__future_base::_Task_state<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int>, void ()>, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int> const&>(std::__future_base::_Task_state<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int>, void ()>*, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&&, std::allocator<int> const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x449573: void std::allocator_traits<std::allocator<int> >::construct<std::__future_base::_Task_state<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int>, void ()>, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int> const&>(std::allocator<int>&, std::__future_base::_Task_state<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int>, void ()>*, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&&, std::allocator<int> const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4493AA: std::_Sp_counted_ptr_inplace<std::__future_base::_Task_state<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int>, void ()>, std::allocator<int>, (__gnu_cxx::_Lock_policy)2>::_Sp_counted_ptr_inplace<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int> const&>(std::allocator<int>, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&&, std::allocator<int> const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44914C: _ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC1INSt13__future_base11_Task_stateISt5_BindIFPFvPvEPN7leveldb18WriteBatchInternal12batch_structEEESaIiEFvvEEESG_ISF_RKSG_EEESt19_Sp_make_shared_tagPT_RKT0_DpOT1_ (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44900E: _ZNSt12__shared_ptrINSt13__future_base11_Task_stateISt5_BindIFPFvPvEPN7leveldb18WriteBatchInternal12batch_structEEESaIiEFvvEEELN9__gnu_cxx12_Lock_policyE2EEC1ISC_ISB_RKSC_EEESt19_Sp_make_shared_tagRKT_DpOT0_ (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x448F3F: _ZNSt10shared_ptrINSt13__future_base11_Task_stateISt5_BindIFPFvPvEPN7leveldb18WriteBatchInternal12batch_structEEESaIiEFvvEEEEC1ISC_ISB_RKSC_EEESt19_Sp_make_shared_tagRKT_DpOT0_ (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x448E87: _ZSt15allocate_sharedINSt13__future_base11_Task_stateISt5_BindIFPFvPvEPN7leveldb18WriteBatchInternal12batch_structEEESaIiEFvvEEESC_ISB_RKSC_EESt10shared_ptrIT_ERKT0_DpOT1_ (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x447161: std::shared_ptr<std::__future_base::_Task_state_base<void ()> > std::__create_task_state<void (), std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int> >(std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&&, std::allocator<int> const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 56 bytes in 1 blocks are still reachable in loss record 28 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x412038: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 56 bytes in 1 blocks are still reachable in loss record 29 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x45CF21: __gnu_cxx::new_allocator<std::_Sp_counted_ptr_inplace<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >, std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > >, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45CDB0: std::allocator_traits<std::allocator<std::_Sp_counted_ptr_inplace<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >, std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > >, (__gnu_cxx::_Lock_policy)2> > >::allocate(std::allocator<std::_Sp_counted_ptr_inplace<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >, std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > >, (__gnu_cxx::_Lock_policy)2> >&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45CB79: std::__allocated_ptr<std::allocator<std::_Sp_counted_ptr_inplace<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >, std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > >, (__gnu_cxx::_Lock_policy)2> > > std::__allocate_guarded<std::allocator<std::_Sp_counted_ptr_inplace<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >, std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > >, (__gnu_cxx::_Lock_policy)2> > >(std::allocator<std::_Sp_counted_ptr_inplace<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >, std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > >, (__gnu_cxx::_Lock_policy)2> >&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45C942: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >, std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > >, std::_Bind_simple<void (*(void*))(void*)> >(std::_Sp_make_shared_tag, std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >*, std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > > const&, std::_Bind_simple<void (*(void*))(void*)>&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45C7E7: std::__shared_ptr<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > >, std::_Bind_simple<void (*(void*))(void*)> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > > const&, std::_Bind_simple<void (*(void*))(void*)>&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45C53D: std::shared_ptr<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > >::shared_ptr<std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > >, std::_Bind_simple<void (*(void*))(void*)> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > > const&, std::_Bind_simple<void (*(void*))(void*)>&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45C209: std::shared_ptr<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > > std::allocate_shared<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >, std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > >, std::_Bind_simple<void (*(void*))(void*)> >(std::allocator<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > > const&, std::_Bind_simple<void (*(void*))(void*)>&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45BB79: std::shared_ptr<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > > std::make_shared<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >, std::_Bind_simple<void (*(void*))(void*)> >(std::_Bind_simple<void (*(void*))(void*)>&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45B21C: std::shared_ptr<std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> > > std::thread::_M_make_routine<std::_Bind_simple<void (*(void*))(void*)> >(std::_Bind_simple<void (*(void*))(void*)>&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45A9B8: std::thread::thread<void (*&)(void*), void*&>(void (*&)(void*), void*&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4571F0: leveldb::(anonymous namespace)::PosixEnv::StartThread(void (*)(void*), void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 64 bytes in 1 blocks are still reachable in loss record 30 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x458F49: __gnu_cxx::new_allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem*>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x458B2A: std::allocator_traits<std::allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem*> >::allocate(std::allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem*>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4586E3: std::_Deque_base<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem, std::allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem> >::_M_allocate_map(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x457FA5: std::_Deque_base<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem, std::allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem> >::_M_initialize_map(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x457819: std::_Deque_base<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem, std::allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem> >::_Deque_base() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45738F: std::deque<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem, std::allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem> >::deque() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x456F18: leveldb::(anonymous namespace)::PosixEnv::PosixEnv() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45763F: leveldb::(anonymous namespace)::SingletonEnv<leveldb::(anonymous namespace)::PosixEnv>::SingletonEnv() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4572AF: leveldb::Env::Default() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x454009: leveldb::Options::Options() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C1D2: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 64 bytes in 1 blocks are still reachable in loss record 31 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x45CAA7: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45C88B: std::allocator_traits<std::allocator<std::_Rb_tree_node<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::allocate(std::allocator<std::_Rb_tree_node<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45C58C: std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_get_node() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45C2A3: std::_Rb_tree_node<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >* std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_create_node<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45BDBE: std::_Rb_tree_node<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >* std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_Alloc_node::operator()<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45B541: std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_insert_<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_Alloc_node>(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_Alloc_node&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45AB6A: std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, bool> std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::_Identity<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_insert_unique<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45A6E5: std::set<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x455C90: leveldb::(anonymous namespace)::PosixLockTable::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x456853: leveldb::(anonymous namespace)::PosixEnv::LockFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::FileLock**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41348D: leveldb::DBImpl::Recover(leveldb::VersionEdit*, bool*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 64 bytes in 1 blocks are still reachable in loss record 32 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x42C183: __gnu_cxx::new_allocator<leveldb::DBImpl::Writer**>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x42AB6E: std::allocator_traits<std::allocator<leveldb::DBImpl::Writer**> >::allocate(std::allocator<leveldb::DBImpl::Writer**>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x428F21: std::_Deque_base<leveldb::DBImpl::Writer*, std::allocator<leveldb::DBImpl::Writer*> >::_M_allocate_map(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x425FC7: std::_Deque_base<leveldb::DBImpl::Writer*, std::allocator<leveldb::DBImpl::Writer*> >::_M_initialize_map(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x422CED: std::_Deque_base<leveldb::DBImpl::Writer*, std::allocator<leveldb::DBImpl::Writer*> >::_Deque_base() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4209BD: std::deque<leveldb::DBImpl::Writer*, std::allocator<leveldb::DBImpl::Writer*> >::deque() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4121AB: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 72 bytes in 1 blocks are still reachable in loss record 33 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x41213C: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 80 bytes in 1 blocks are still reachable in loss record 34 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x42AD17: __gnu_cxx::new_allocator<leveldb::MemTable*>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4291B5: std::allocator_traits<std::allocator<leveldb::MemTable*> >::allocate(std::allocator<leveldb::MemTable*>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4263C9: std::_Vector_base<leveldb::MemTable*, std::allocator<leveldb::MemTable*> >::_M_allocate(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x422F4F: std::vector<leveldb::MemTable*, std::allocator<leveldb::MemTable*> >::_M_default_append(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x420B12: std::vector<leveldb::MemTable*, std::allocator<leveldb::MemTable*> >::resize(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4122D5: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 80 bytes in 1 blocks are still reachable in loss record 35 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x42AD17: __gnu_cxx::new_allocator<leveldb::MemTable*>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4291B5: std::allocator_traits<std::allocator<leveldb::MemTable*> >::allocate(std::allocator<leveldb::MemTable*>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4263C9: std::_Vector_base<leveldb::MemTable*, std::allocator<leveldb::MemTable*> >::_M_allocate(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x422F4F: std::vector<leveldb::MemTable*, std::allocator<leveldb::MemTable*> >::_M_default_append(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x420B12: std::vector<leveldb::MemTable*, std::allocator<leveldb::MemTable*> >::resize(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4122F7: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 80 bytes in 1 blocks are still reachable in loss record 36 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x42AE11: __gnu_cxx::new_allocator<leveldb::port::AtomicPointer>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4292A3: std::allocator_traits<std::allocator<leveldb::port::AtomicPointer> >::allocate(std::allocator<leveldb::port::AtomicPointer>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x426565: std::_Vector_base<leveldb::port::AtomicPointer, std::allocator<leveldb::port::AtomicPointer> >::_M_allocate(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4231C3: std::vector<leveldb::port::AtomicPointer, std::allocator<leveldb::port::AtomicPointer> >::_M_default_append(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x420B9E: std::vector<leveldb::port::AtomicPointer, std::allocator<leveldb::port::AtomicPointer> >::resize(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x412319: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 80 bytes in 1 blocks are still reachable in loss record 37 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x42A9D5: __gnu_cxx::new_allocator<std::thread>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x428C03: std::allocator_traits<std::allocator<std::thread> >::allocate(std::allocator<std::thread>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x425ABB: std::_Vector_base<std::thread, std::allocator<std::thread> >::_M_allocate(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4226CF: std::vector<std::thread, std::allocator<std::thread> >::_M_default_append(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x42051C: std::vector<std::thread, std::allocator<std::thread> >::resize(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41E7E3: leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41236D: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 80 bytes in 1 blocks are still reachable in loss record 38 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x42A9D5: __gnu_cxx::new_allocator<std::thread>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x428C03: std::allocator_traits<std::allocator<std::thread> >::allocate(std::allocator<std::thread>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x425ABB: std::_Vector_base<std::thread, std::allocator<std::thread> >::_M_allocate(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4226CF: std::vector<std::thread, std::allocator<std::thread> >::_M_default_append(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x42051C: std::vector<std::thread, std::allocator<std::thread> >::resize(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41E7E3: leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4123D9: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 80 bytes in 10 blocks are indirectly lost in loss record 39 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x44FEDB: __gnu_cxx::new_allocator<char*>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44FDB7: std::allocator_traits<std::allocator<char*> >::allocate(std::allocator<char*>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44FC85: std::_Vector_base<char*, std::allocator<char*> >::_M_allocate(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F8C7: void std::vector<char*, std::allocator<char*> >::_M_emplace_back_aux<char* const&>(char* const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F77E: std::vector<char*, std::allocator<char*> >::push_back(char* const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F625: leveldb::Arena::AllocateNewBlock(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F4AB: leveldb::Arena::AllocateFallback(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F5AF: leveldb::Arena::AllocateAligned(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x436396: leveldb::SkipList<char const*, leveldb::MemTable::KeyComparator>::NewNode(char const* const&, int) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x435F0C: leveldb::SkipList<char const*, leveldb::MemTable::KeyComparator>::SkipList(leveldb::MemTable::KeyComparator, leveldb::Arena*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x435370: leveldb::MemTable::MemTable(leveldb::InternalKeyComparator const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 96 bytes in 2 blocks are still reachable in loss record 40 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x42CD14: __gnu_cxx::new_allocator<std::_List_node<std::function<void ()> > >::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x42BC5D: std::__cxx11::_List_base<std::function<void ()>, std::allocator<std::function<void ()> > >::_M_get_node() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x447E30: std::_List_node<std::function<void ()> >* std::__cxx11::list<std::function<void ()>, std::allocator<std::function<void ()> > >::_M_create_node<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}>(std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x447AC7: void std::__cxx11::list<std::function<void ()>, std::allocator<std::function<void ()> > >::_M_insert<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}>(std::_List_iterator<std::function<void ()> >, std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4476F4: void std::__cxx11::list<std::function<void ()>, std::allocator<std::function<void ()> > >::emplace_back<std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}>(std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&)::{lambda()#1}&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44742E: std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x446D36: leveldb::WriteBatchInternal::InsertInto(leveldb::MultiWriteBatch const*, std::vector<leveldb::MemTable*, std::allocator<leveldb::MemTable*> >&, leveldb::ThreadPool*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x418B05: leveldb::DBImpl::Write(leveldb::WriteOptions const&, bool, leveldb::MultiWriteBatch*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40BF1F: leveldb::Benchmark::CustomedWorkloadWrite(leveldb::(anonymous namespace)::ThreadState*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x409EC6: leveldb::Benchmark::Loaduniform100_20000k(leveldb::(anonymous namespace)::ThreadState*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F956: leveldb::Benchmark::ThreadBody(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 96 bytes in 3 blocks are still reachable in loss record 41 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x42ECBB: __gnu_cxx::new_allocator<std::_Sp_counted_ptr_inplace<std::packaged_task<void ()>, std::allocator<std::packaged_task<void ()> >, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x42E57A: std::allocator_traits<std::allocator<std::_Sp_counted_ptr_inplace<std::packaged_task<void ()>, std::allocator<std::packaged_task<void ()> >, (__gnu_cxx::_Lock_policy)2> > >::allocate(std::allocator<std::_Sp_counted_ptr_inplace<std::packaged_task<void ()>, std::allocator<std::packaged_task<void ()> >, (__gnu_cxx::_Lock_policy)2> >&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x42D9AD: std::__allocated_ptr<std::allocator<std::_Sp_counted_ptr_inplace<std::packaged_task<void ()>, std::allocator<std::packaged_task<void ()> >, (__gnu_cxx::_Lock_policy)2> > > std::__allocate_guarded<std::allocator<std::_Sp_counted_ptr_inplace<std::packaged_task<void ()>, std::allocator<std::packaged_task<void ()> >, (__gnu_cxx::_Lock_policy)2> > >(std::allocator<std::_Sp_counted_ptr_inplace<std::packaged_task<void ()>, std::allocator<std::packaged_task<void ()> >, (__gnu_cxx::_Lock_policy)2> >&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x448368: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::packaged_task<void ()>, std::allocator<std::packaged_task<void ()> >, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)> >(std::_Sp_make_shared_tag, std::packaged_task<void ()>*, std::allocator<std::packaged_task<void ()> > const&, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x448139: std::__shared_ptr<std::packaged_task<void ()>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::packaged_task<void ()> >, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)> >(std::_Sp_make_shared_tag, std::allocator<std::packaged_task<void ()> > const&, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x447E07: std::shared_ptr<std::packaged_task<void ()> >::shared_ptr<std::allocator<std::packaged_task<void ()> >, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)> >(std::_Sp_make_shared_tag, std::allocator<std::packaged_task<void ()> > const&, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x447A73: std::shared_ptr<std::packaged_task<void ()> > std::allocate_shared<std::packaged_task<void ()>, std::allocator<std::packaged_task<void ()> >, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)> >(std::allocator<std::packaged_task<void ()> > const&, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44765E: std::shared_ptr<std::packaged_task<void ()> > std::make_shared<std::packaged_task<void ()>, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)> >(std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4473E6: std::future<decltype ({parm#1}({parm#2}...))> leveldb::ThreadPool::AddJob<void (&)(void*), leveldb::WriteBatchInternal::batch_struct*>(void (&)(void*), leveldb::WriteBatchInternal::batch_struct*&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x446D36: leveldb::WriteBatchInternal::InsertInto(leveldb::MultiWriteBatch const*, std::vector<leveldb::MemTable*, std::allocator<leveldb::MemTable*> >&, leveldb::ThreadPool*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x418B05: leveldb::DBImpl::Write(leveldb::WriteOptions const&, bool, leveldb::MultiWriteBatch*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 101 bytes in 1 blocks are still reachable in loss record 42 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5176498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x517700A: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x406D8B: leveldb::(anonymous namespace)::WorkloadGenerator::getData() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x406F2E: leveldb::(anonymous namespace)::WorkloadGenerator::getRequest(char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40BE2F: leveldb::Benchmark::CustomedWorkloadWrite(leveldb::(anonymous namespace)::ThreadState*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x409EC6: leveldb::Benchmark::Loaduniform100_20000k(leveldb::(anonymous namespace)::ThreadState*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F956: leveldb::Benchmark::ThreadBody(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D3A5: void std::_Bind_simple<void (*(void*))(void*)>::_M_invoke<0ul>(std::_Index_tuple<0ul>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D2AF: std::_Bind_simple<void (*(void*))(void*)>::operator()() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D23F: std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >::_M_run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x510FC7F: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397== 
+==7397== 144 bytes in 6 blocks are still reachable in loss record 43 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x446C39: leveldb::WriteBatchInternal::InsertInto(leveldb::MultiWriteBatch const*, std::vector<leveldb::MemTable*, std::allocator<leveldb::MemTable*> >&, leveldb::ThreadPool*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x418B05: leveldb::DBImpl::Write(leveldb::WriteOptions const&, bool, leveldb::MultiWriteBatch*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40BF1F: leveldb::Benchmark::CustomedWorkloadWrite(leveldb::(anonymous namespace)::ThreadState*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x409EC6: leveldb::Benchmark::Loaduniform100_20000k(leveldb::(anonymous namespace)::ThreadState*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F956: leveldb::Benchmark::ThreadBody(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D3A5: void std::_Bind_simple<void (*(void*))(void*)>::_M_invoke<0ul>(std::_Index_tuple<0ul>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D2AF: std::_Bind_simple<void (*(void*))(void*)>::operator()() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D23F: std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >::_M_run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x510FC7F: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==7397==    by 0x59FF41C: clone (clone.S:109)
+==7397== 
+==7397== 216 bytes in 3 blocks are still reachable in loss record 44 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x4495C5: __gnu_cxx::new_allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Task_state<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int>, void ()>, std::allocator<int>, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x449450: std::allocator_traits<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Task_state<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int>, void ()>, std::allocator<int>, (__gnu_cxx::_Lock_policy)2> > >::allocate(std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Task_state<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int>, void ()>, std::allocator<int>, (__gnu_cxx::_Lock_policy)2> >&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x449259: std::__allocated_ptr<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Task_state<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int>, void ()>, std::allocator<int>, (__gnu_cxx::_Lock_policy)2> > > std::__allocate_guarded<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Task_state<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int>, void ()>, std::allocator<int>, (__gnu_cxx::_Lock_policy)2> > >(std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Task_state<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int>, void ()>, std::allocator<int>, (__gnu_cxx::_Lock_policy)2> >&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4490CF: _ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC1INSt13__future_base11_Task_stateISt5_BindIFPFvPvEPN7leveldb18WriteBatchInternal12batch_structEEESaIiEFvvEEESG_ISF_RKSG_EEESt19_Sp_make_shared_tagPT_RKT0_DpOT1_ (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44900E: _ZNSt12__shared_ptrINSt13__future_base11_Task_stateISt5_BindIFPFvPvEPN7leveldb18WriteBatchInternal12batch_structEEESaIiEFvvEEELN9__gnu_cxx12_Lock_policyE2EEC1ISC_ISB_RKSC_EEESt19_Sp_make_shared_tagRKT_DpOT0_ (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x448F3F: _ZNSt10shared_ptrINSt13__future_base11_Task_stateISt5_BindIFPFvPvEPN7leveldb18WriteBatchInternal12batch_structEEESaIiEFvvEEEEC1ISC_ISB_RKSC_EEESt19_Sp_make_shared_tagRKT_DpOT0_ (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x448E87: _ZSt15allocate_sharedINSt13__future_base11_Task_stateISt5_BindIFPFvPvEPN7leveldb18WriteBatchInternal12batch_structEEESaIiEFvvEEESC_ISB_RKSC_EESt10shared_ptrIT_ERKT0_DpOT1_ (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x447161: std::shared_ptr<std::__future_base::_Task_state_base<void ()> > std::__create_task_state<void (), std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int> >(std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&&, std::allocator<int> const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x448D50: std::packaged_task<void ()>::packaged_task<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, std::allocator<int>, void>(std::allocator_arg_t, std::allocator<int> const&, std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x448C40: std::packaged_task<void ()>::packaged_task<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>, void>(std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x448A09: _ZN9__gnu_cxx13new_allocatorISt13packaged_taskIFvvEEE9constructIS3_ISt5_BindIFPFvPvEPN7leveldb18WriteBatchInternal12batch_structEEEEEEvPT_DpOT0_ (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 232 bytes in 1 blocks are still reachable in loss record 45 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x43B72F: leveldb::VersionSet::LogAndApply(leveldb::VersionEdit*, leveldb::port::Mutex*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41B108: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 272 bytes in 1 blocks are still reachable in loss record 46 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x412353: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 272 bytes in 1 blocks are still reachable in loss record 47 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x4123BF: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 288 bytes in 1 blocks are possibly lost in loss record 48 of 80
+==7397==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x40138A4: allocate_dtv (dl-tls.c:322)
+==7397==    by 0x40138A4: _dl_allocate_tls (dl-tls.c:539)
+==7397==    by 0x4E4226E: allocate_stack (allocatestack.c:588)
+==7397==    by 0x4E4226E: pthread_create@@GLIBC_2.2.5 (pthread_create.c:539)
+==7397==    by 0x510FDC2: std::thread::_M_start_thread(std::shared_ptr<std::thread::_Impl_base>, void (*)()) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x45A9E3: std::thread::thread<void (*&)(void*), void*&>(void (*&)(void*), void*&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4571F0: leveldb::(anonymous namespace)::PosixEnv::StartThread(void (*)(void*), void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x407DBF: leveldb::Benchmark::RunBenchmark(int, leveldb::Slice, void (leveldb::Benchmark::*)(leveldb::(anonymous namespace)::ThreadState*)) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F788: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 400 bytes in 1 blocks are still reachable in loss record 49 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x41147D: __gnu_cxx::new_allocator<leveldb::WriteBatch>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41117D: std::allocator_traits<std::allocator<leveldb::WriteBatch> >::allocate(std::allocator<leveldb::WriteBatch>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x410D5B: std::_Vector_base<leveldb::WriteBatch, std::allocator<leveldb::WriteBatch> >::_M_allocate(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4106C4: std::vector<leveldb::WriteBatch, std::allocator<leveldb::WriteBatch> >::_M_default_append(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4102B2: std::vector<leveldb::WriteBatch, std::allocator<leveldb::WriteBatch> >::resize(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40D003: leveldb::MultiWriteBatch::MultiWriteBatch(int) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x412153: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 400 bytes in 1 blocks are still reachable in loss record 50 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x41147D: __gnu_cxx::new_allocator<leveldb::WriteBatch>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41117D: std::allocator_traits<std::allocator<leveldb::WriteBatch> >::allocate(std::allocator<leveldb::WriteBatch>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x410D5B: std::_Vector_base<leveldb::WriteBatch, std::allocator<leveldb::WriteBatch> >::_M_allocate(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4106C4: std::vector<leveldb::WriteBatch, std::allocator<leveldb::WriteBatch> >::_M_default_append(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4102B2: std::vector<leveldb::WriteBatch, std::allocator<leveldb::WriteBatch> >::resize(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40D003: leveldb::MultiWriteBatch::MultiWriteBatch(int) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40BD73: leveldb::Benchmark::CustomedWorkloadWrite(leveldb::(anonymous namespace)::ThreadState*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x409EC6: leveldb::Benchmark::Loaduniform100_20000k(leveldb::(anonymous namespace)::ThreadState*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F956: leveldb::Benchmark::ThreadBody(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D3A5: void std::_Bind_simple<void (*(void*))(void*)>::_M_invoke<0ul>(std::_Index_tuple<0ul>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D2AF: std::_Bind_simple<void (*(void*))(void*)>::operator()() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 512 bytes in 1 blocks are still reachable in loss record 51 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x459237: __gnu_cxx::new_allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x458EC8: std::allocator_traits<std::allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem> >::allocate(std::allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x458A33: std::_Deque_base<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem, std::allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem> >::_M_allocate_node() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x458760: std::_Deque_base<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem, std::allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem> >::_M_create_nodes(leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem**, leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x457FFE: std::_Deque_base<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem, std::allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem> >::_M_initialize_map(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x457819: std::_Deque_base<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem, std::allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem> >::_Deque_base() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45738F: std::deque<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem, std::allocator<leveldb::(anonymous namespace)::PosixEnv::BackgroundWorkItem> >::deque() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x456F18: leveldb::(anonymous namespace)::PosixEnv::PosixEnv() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45763F: leveldb::(anonymous namespace)::SingletonEnv<leveldb::(anonymous namespace)::PosixEnv>::SingletonEnv() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4572AF: leveldb::Env::Default() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x454009: leveldb::Options::Options() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 512 bytes in 1 blocks are still reachable in loss record 52 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x42CB03: __gnu_cxx::new_allocator<leveldb::DBImpl::Writer*>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x42BA94: std::allocator_traits<std::allocator<leveldb::DBImpl::Writer*> >::allocate(std::allocator<leveldb::DBImpl::Writer*>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x42A109: std::_Deque_base<leveldb::DBImpl::Writer*, std::allocator<leveldb::DBImpl::Writer*> >::_M_allocate_node() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x427989: void std::deque<leveldb::DBImpl::Writer*, std::allocator<leveldb::DBImpl::Writer*> >::_M_push_back_aux<leveldb::DBImpl::Writer*>(leveldb::DBImpl::Writer*&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4240AC: void std::deque<leveldb::DBImpl::Writer*, std::allocator<leveldb::DBImpl::Writer*> >::emplace_back<leveldb::DBImpl::Writer*>(leveldb::DBImpl::Writer*&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x421191: std::deque<leveldb::DBImpl::Writer*, std::allocator<leveldb::DBImpl::Writer*> >::push_back(leveldb::DBImpl::Writer*&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x418941: leveldb::DBImpl::Write(leveldb::WriteOptions const&, bool, leveldb::MultiWriteBatch*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40BF1F: leveldb::Benchmark::CustomedWorkloadWrite(leveldb::(anonymous namespace)::ThreadState*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x409EC6: leveldb::Benchmark::Loaduniform100_20000k(leveldb::(anonymous namespace)::ThreadState*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F956: leveldb::Benchmark::ThreadBody(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D3A5: void std::_Bind_simple<void (*(void*))(void*)>::_M_invoke<0ul>(std::_Index_tuple<0ul>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 512 bytes in 16 blocks are still reachable in loss record 53 of 80
+==7397==    at 0x4C2E80F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x45094F: leveldb::(anonymous namespace)::HandleTable::Resize() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x450694: leveldb::(anonymous namespace)::HandleTable::HandleTable() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x450B2D: leveldb::(anonymous namespace)::LRUCache::LRUCache() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x451593: leveldb::(anonymous namespace)::ShardedLRUCache::ShardedLRUCache(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x451A4E: leveldb::NewLRUCache(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x411DA2: leveldb::SanitizeOptions(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::InternalKeyComparator const*, leveldb::InternalFilterPolicy const*, leveldb::Options const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x411FBE: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 512 bytes in 16 blocks are still reachable in loss record 54 of 80
+==7397==    at 0x4C2E80F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x45094F: leveldb::(anonymous namespace)::HandleTable::Resize() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x450694: leveldb::(anonymous namespace)::HandleTable::HandleTable() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x450B2D: leveldb::(anonymous namespace)::LRUCache::LRUCache() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x451593: leveldb::(anonymous namespace)::ShardedLRUCache::ShardedLRUCache(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x451A4E: leveldb::NewLRUCache(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x436A12: leveldb::TableCache::TableCache(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::Options const&, int) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41205B: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 552 bytes in 1 blocks are still reachable in loss record 55 of 80
+==7397==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5965CDC: __fopen_internal (iofopen.c:69)
+==7397==    by 0x456C96: leveldb::(anonymous namespace)::PosixEnv::NewLogger(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::Logger**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x411D54: leveldb::SanitizeOptions(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::InternalKeyComparator const*, leveldb::InternalFilterPolicy const*, leveldb::Options const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x411FBE: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 552 bytes in 1 blocks are still reachable in loss record 56 of 80
+==7397==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5965CDC: __fopen_internal (iofopen.c:69)
+==7397==    by 0x510711F: std::__basic_file<char>::open(char const*, std::_Ios_Openmode, int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x5147699: std::basic_filebuf<char, std::char_traits<char> >::open(char const*, std::_Ios_Openmode) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x514852F: std::basic_ifstream<char, std::char_traits<char> >::basic_ifstream(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::_Ios_Openmode) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x406A58: leveldb::(anonymous namespace)::WorkloadGenerator::WorkloadGenerator(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40BDBF: leveldb::Benchmark::CustomedWorkloadWrite(leveldb::(anonymous namespace)::ThreadState*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x409EC6: leveldb::Benchmark::Loaduniform100_20000k(leveldb::(anonymous namespace)::ThreadState*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F956: leveldb::Benchmark::ThreadBody(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D3A5: void std::_Bind_simple<void (*(void*))(void*)>::_M_invoke<0ul>(std::_Index_tuple<0ul>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D2AF: std::_Bind_simple<void (*(void*))(void*)>::operator()() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D23F: std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >::_M_run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 552 bytes in 1 blocks are still reachable in loss record 57 of 80
+==7397==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5965CDC: __fopen_internal (iofopen.c:69)
+==7397==    by 0x4544BB: DEBUG_T(char const*, ...) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41E5F9: leveldb::ThreadPool::next_job() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41E431: leveldb::ThreadPool::Task() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41E6E2: leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1}::operator()() const (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x431191: void std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()>::_M_invoke<>(std::_Index_tuple<>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x430D67: std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()>::operator()() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x430B03: std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >::_M_run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x510FC7F: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==7397==    by 0x59FF41C: clone (clone.S:109)
+==7397== 
+==7397== 600 bytes in 1 blocks are still reachable in loss record 58 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x412213: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 856 bytes in 1 blocks are still reachable in loss record 59 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x41ADF8: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 960 bytes in 20 blocks are still reachable in loss record 60 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x42EF34: __gnu_cxx::new_allocator<std::_Sp_counted_ptr_inplace<std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, std::allocator<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x42E8A6: std::allocator_traits<std::allocator<std::_Sp_counted_ptr_inplace<std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, std::allocator<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, (__gnu_cxx::_Lock_policy)2> > >::allocate(std::_Sp_counted_ptr_inplace<std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, std::allocator<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, (__gnu_cxx::_Lock_policy)2>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x42DE2B: std::__allocated_ptr<std::allocator<std::_Sp_counted_ptr_inplace<std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, std::allocator<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, (__gnu_cxx::_Lock_policy)2> > > std::__allocate_guarded<std::allocator<std::_Sp_counted_ptr_inplace<std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, std::allocator<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, (__gnu_cxx::_Lock_policy)2> > >(std::__allocated_ptr&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x42D0AE: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, std::allocator<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()>(std::_Sp_make_shared_tag, std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >*, std::allocator<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> > const&, leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} (&&)()) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x42C0ED: std::__shared_ptr<std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()>(std::_Sp_make_shared_tag, std::allocator<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> > const&, leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} (&&)()) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x42AA77: std::shared_ptr<std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> > >::shared_ptr<std::allocator<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()>(std::_Sp_make_shared_tag, std::allocator<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> > const&, leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} (&&)()) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x428D01: std::shared_ptr<std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> > > std::allocate_shared<std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, std::allocator<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()>(std::allocator<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> > const&, leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} (&&)()) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x425C0D: std::shared_ptr<std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> > > std::make_shared<std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >, leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()>(leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} (&&)()) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4229CE: std::shared_ptr<std::thread::_Impl<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> > > std::thread::_M_make_routine<std::_Bind_simple<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1} ()> >(std::thread::_Impl&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x420624: std::thread::thread<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1}>(leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1}&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41E811: leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 1,152 bytes in 4 blocks are possibly lost in loss record 61 of 80
+==7397==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x40138A4: allocate_dtv (dl-tls.c:322)
+==7397==    by 0x40138A4: _dl_allocate_tls (dl-tls.c:539)
+==7397==    by 0x4E4226E: allocate_stack (allocatestack.c:588)
+==7397==    by 0x4E4226E: pthread_create@@GLIBC_2.2.5 (pthread_create.c:539)
+==7397==    by 0x510FDC2: std::thread::_M_start_thread(std::shared_ptr<std::thread::_Impl_base>, void (*)()) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x42064F: std::thread::thread<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1}>(leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1}&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41E811: leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4123D9: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40DDA5: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 1,200 bytes in 10 blocks are still reachable in loss record 62 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x41AFED: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 1,368 bytes in 1 blocks are still reachable in loss record 63 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x407D08: leveldb::Benchmark::RunBenchmark(int, leveldb::Slice, void (leveldb::Benchmark::*)(leveldb::(anonymous namespace)::ThreadState*)) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F788: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 1,728 bytes in 6 blocks are possibly lost in loss record 64 of 80
+==7397==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x40138A4: allocate_dtv (dl-tls.c:322)
+==7397==    by 0x40138A4: _dl_allocate_tls (dl-tls.c:539)
+==7397==    by 0x4E4226E: allocate_stack (allocatestack.c:588)
+==7397==    by 0x4E4226E: pthread_create@@GLIBC_2.2.5 (pthread_create.c:539)
+==7397==    by 0x510FDC2: std::thread::_M_start_thread(std::shared_ptr<std::thread::_Impl_base>, void (*)()) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x42064F: std::thread::thread<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1}>(leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1}&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41E811: leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41236D: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 2,880 bytes in 10 blocks are possibly lost in loss record 65 of 80
+==7397==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x40138A4: allocate_dtv (dl-tls.c:322)
+==7397==    by 0x40138A4: _dl_allocate_tls (dl-tls.c:539)
+==7397==    by 0x4E4226E: allocate_stack (allocatestack.c:588)
+==7397==    by 0x4E4226E: pthread_create@@GLIBC_2.2.5 (pthread_create.c:539)
+==7397==    by 0x510FDC2: std::thread::_M_start_thread(std::shared_ptr<std::thread::_Impl_base>, void (*)()) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x42064F: std::thread::thread<leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1}>(leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda()#1}&&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41E811: leveldb::ThreadPool::ThreadPool(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4123D9: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 3,520 bytes in 1 blocks are still reachable in loss record 66 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x451A3C: leveldb::NewLRUCache(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x411DA2: leveldb::SanitizeOptions(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::InternalKeyComparator const*, leveldb::InternalFilterPolicy const*, leveldb::Options const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x411FBE: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 3,520 bytes in 1 blocks are still reachable in loss record 67 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x451A3C: leveldb::NewLRUCache(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x436A12: leveldb::TableCache::TableCache(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::Options const&, int) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41205B: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 8,192 bytes in 1 blocks are still reachable in loss record 68 of 80
+==7397==    at 0x4C2E80F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5143467: std::basic_filebuf<char, std::char_traits<char> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x51476B1: std::basic_filebuf<char, std::char_traits<char> >::open(char const*, std::_Ios_Openmode) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x514852F: std::basic_ifstream<char, std::char_traits<char> >::basic_ifstream(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::_Ios_Openmode) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x406A58: leveldb::(anonymous namespace)::WorkloadGenerator::WorkloadGenerator(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40BDBF: leveldb::Benchmark::CustomedWorkloadWrite(leveldb::(anonymous namespace)::ThreadState*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x409EC6: leveldb::Benchmark::Loaduniform100_20000k(leveldb::(anonymous namespace)::ThreadState*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F956: leveldb::Benchmark::ThreadBody(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D3A5: void std::_Bind_simple<void (*(void*))(void*)>::_M_invoke<0ul>(std::_Index_tuple<0ul>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D2AF: std::_Bind_simple<void (*(void*))(void*)>::operator()() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D23F: std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >::_M_run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x510FC7F: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397== 
+==7397== 9,473 bytes in 1 blocks are still reachable in loss record 69 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5176498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x5177832: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x451E97: leveldb::PutLengthPrefixedSlice(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, leveldb::Slice const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44661B: leveldb::WriteBatch::Put(leveldb::Slice const&, leveldb::Slice const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4468E9: leveldb::MultiWriteBatch::Put(leveldb::Slice const&, leveldb::Slice const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40BEB0: leveldb::Benchmark::CustomedWorkloadWrite(leveldb::(anonymous namespace)::ThreadState*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x409EC6: leveldb::Benchmark::Loaduniform100_20000k(leveldb::(anonymous namespace)::ThreadState*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F956: leveldb::Benchmark::ThreadBody(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D3A5: void std::_Bind_simple<void (*(void*))(void*)>::_M_invoke<0ul>(std::_Index_tuple<0ul>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D2AF: std::_Bind_simple<void (*(void*))(void*)>::operator()() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D23F: std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >::_M_run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 12,800 bytes in 1 blocks are still reachable in loss record 70 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x411F38: leveldb::DBImpl::DBImpl(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AE14: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 33,792 bytes in 9 blocks are still reachable in loss record 71 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x44FEDB: __gnu_cxx::new_allocator<char*>::allocate(unsigned long, void const*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44FDB7: std::allocator_traits<std::allocator<char*> >::allocate(std::allocator<char*>&, unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44FC85: std::_Vector_base<char*, std::allocator<char*> >::_M_allocate(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F8C7: void std::vector<char*, std::allocator<char*> >::_M_emplace_back_aux<char* const&>(char* const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F77E: std::vector<char*, std::allocator<char*> >::push_back(char* const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F625: leveldb::Arena::AllocateNewBlock(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F4AB: leveldb::Arena::AllocateFallback(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x435B7D: leveldb::Arena::Allocate(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x43563D: leveldb::MemTable::Add(unsigned long, leveldb::ValueType, leveldb::Slice const&, leveldb::Slice const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x445D02: leveldb::(anonymous namespace)::MemTableInserter::Put(leveldb::Slice const&, leveldb::Slice const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x446381: leveldb::WriteBatch::Iterate(leveldb::WriteBatch::Handler*) const (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 40,960 bytes in 10 blocks are still reachable in loss record 72 of 80
+==7397==    at 0x4C2E80F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x44F60A: leveldb::Arena::AllocateNewBlock(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F4AB: leveldb::Arena::AllocateFallback(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F5AF: leveldb::Arena::AllocateAligned(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x436396: leveldb::SkipList<char const*, leveldb::MemTable::KeyComparator>::NewNode(char const* const&, int) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x435F0C: leveldb::SkipList<char const*, leveldb::MemTable::KeyComparator>::SkipList(leveldb::MemTable::KeyComparator, leveldb::Arena*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x435370: leveldb::MemTable::MemTable(leveldb::InternalKeyComparator const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41B006: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 40,960 bytes in 10 blocks are indirectly lost in loss record 73 of 80
+==7397==    at 0x4C2E80F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x44F60A: leveldb::Arena::AllocateNewBlock(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F4AB: leveldb::Arena::AllocateFallback(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F5AF: leveldb::Arena::AllocateAligned(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x436396: leveldb::SkipList<char const*, leveldb::MemTable::KeyComparator>::NewNode(char const* const&, int) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x435F0C: leveldb::SkipList<char const*, leveldb::MemTable::KeyComparator>::SkipList(leveldb::MemTable::KeyComparator, leveldb::Arena*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x435370: leveldb::MemTable::MemTable(leveldb::InternalKeyComparator const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41B006: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40DDA5: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 42,240 (1,200 direct, 41,040 indirect) bytes in 10 blocks are definitely lost in loss record 74 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x41AFED: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40DDA5: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 65,624 bytes in 1 blocks are still reachable in loss record 75 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x456209: leveldb::(anonymous namespace)::PosixEnv::NewWritableFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::WritableFile**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41AF1D: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 65,624 bytes in 1 blocks are still reachable in loss record 76 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x456209: leveldb::(anonymous namespace)::PosixEnv::NewWritableFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::WritableFile**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x43B8CD: leveldb::VersionSet::LogAndApply(leveldb::VersionEdit*, leveldb::port::Mutex*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x41B108: leveldb::DB::Open(leveldb::Options const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, leveldb::DB**) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40FB11: leveldb::Benchmark::Open() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F73E: leveldb::Benchmark::Run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40C95D: main (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 72,704 bytes in 1 blocks are still reachable in loss record 77 of 80
+==7397==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x50E0EFF: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x40106B9: call_init.part.0 (dl-init.c:72)
+==7397==    by 0x40107CA: call_init (dl-init.c:30)
+==7397==    by 0x40107CA: _dl_init (dl-init.c:120)
+==7397==    by 0x4000C69: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+==7397==    by 0x3: ???
+==7397==    by 0xFFF000636: ???
+==7397==    by 0xFFF00066A: ???
+==7397==    by 0xFFF000676: ???
+==7397==    by 0xFFF000699: ???
+==7397== 
+==7397== 73,728 bytes in 18 blocks are still reachable in loss record 78 of 80
+==7397==    at 0x4C2E80F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x44F60A: leveldb::Arena::AllocateNewBlock(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F4AB: leveldb::Arena::AllocateFallback(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F5AF: leveldb::Arena::AllocateAligned(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x436396: leveldb::SkipList<char const*, leveldb::MemTable::KeyComparator>::NewNode(char const* const&, int) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4362E9: leveldb::SkipList<char const*, leveldb::MemTable::KeyComparator>::Insert(char const* const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x435738: leveldb::MemTable::Add(unsigned long, leveldb::ValueType, leveldb::Slice const&, leveldb::Slice const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x445D02: leveldb::(anonymous namespace)::MemTableInserter::Put(leveldb::Slice const&, leveldb::Slice const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x446381: leveldb::WriteBatch::Iterate(leveldb::WriteBatch::Handler*) const (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x446A62: leveldb::WriteBatchInternal::DealWithBatchIterator(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44A516: void std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>::__call<void, , 0ul>(std::tuple<>&&, std::_Index_tuple<0ul>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44A46E: void std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>::operator()<, void>() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 151,560 bytes in 8 blocks are still reachable in loss record 79 of 80
+==7397==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x5176498: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x5177832: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==7397==    by 0x451E97: leveldb::PutLengthPrefixedSlice(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, leveldb::Slice const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x446604: leveldb::WriteBatch::Put(leveldb::Slice const&, leveldb::Slice const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x4468E9: leveldb::MultiWriteBatch::Put(leveldb::Slice const&, leveldb::Slice const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40BEB0: leveldb::Benchmark::CustomedWorkloadWrite(leveldb::(anonymous namespace)::ThreadState*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x409EC6: leveldb::Benchmark::Loaduniform100_20000k(leveldb::(anonymous namespace)::ThreadState*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x40F956: leveldb::Benchmark::ThreadBody(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D3A5: void std::_Bind_simple<void (*(void*))(void*)>::_M_invoke<0ul>(std::_Index_tuple<0ul>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D2AF: std::_Bind_simple<void (*(void*))(void*)>::operator()() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x45D23F: std::thread::_Impl<std::_Bind_simple<void (*(void*))(void*)> >::_M_run() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== 10,178,560 bytes in 2,485 blocks are still reachable in loss record 80 of 80
+==7397==    at 0x4C2E80F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7397==    by 0x44F60A: leveldb::Arena::AllocateNewBlock(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44F4AB: leveldb::Arena::AllocateFallback(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x435B7D: leveldb::Arena::Allocate(unsigned long) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x43563D: leveldb::MemTable::Add(unsigned long, leveldb::ValueType, leveldb::Slice const&, leveldb::Slice const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x445D02: leveldb::(anonymous namespace)::MemTableInserter::Put(leveldb::Slice const&, leveldb::Slice const&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x446381: leveldb::WriteBatch::Iterate(leveldb::WriteBatch::Handler*) const (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x446A62: leveldb::WriteBatchInternal::DealWithBatchIterator(void*) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44A516: void std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>::__call<void, , 0ul>(std::tuple<>&&, std::_Index_tuple<0ul>) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44A46E: void std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>::operator()<, void>() (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44A432: std::enable_if<((!std::is_member_pointer<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)> >::value)&&(!std::is_function<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)> >::value))&&(!std::is_function<std::remove_pointer<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)> >::type>::value), std::result_of<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>& ()>::type>::type std::__invoke<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>>(std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>&) (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397==    by 0x44A407: std::result_of<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)>& ()>::type std::reference_wrapper<std::_Bind<void (*(leveldb::WriteBatchInternal::batch_struct*))(void*)> >::operator()<>() const (in /home/meggie/文档/leveldb-multimem/build/db_bench)
+==7397== 
+==7397== LEAK SUMMARY:
+==7397==    definitely lost: 1,200 bytes in 10 blocks
+==7397==    indirectly lost: 41,040 bytes in 20 blocks
+==7397==      possibly lost: 6,048 bytes in 21 blocks
+==7397==    still reachable: 10,732,501 bytes in 2,669 blocks
+==7397==         suppressed: 0 bytes in 0 blocks
+==7397== 
+==7397== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
+==7397== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)

@@ -1,0 +1,237 @@
+Determining if the function crc32c_value exists in the crc32c failed with the following output:
+Change Dir: /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8d19f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8d19f.dir/build.make CMakeFiles/cmTC_8d19f.dir/build
+make[1]: Entering directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8d19f.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=crc32c_value   -std=c11 -o CMakeFiles/cmTC_8d19f.dir/CheckFunctionExists.c.o   -c /usr/local/share/cmake-3.9/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8d19f
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8d19f.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=crc32c_value    CMakeFiles/cmTC_8d19f.dir/CheckFunctionExists.c.o  -o cmTC_8d19f -lcrc32c 
+/usr/bin/ld: 找不到 -lcrc32c
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_8d19f.dir/build.make:97: recipe for target 'cmTC_8d19f' failed
+make[1]: *** [cmTC_8d19f] Error 1
+make[1]: Leaving directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_8d19f/fast' failed
+make: *** [cmTC_8d19f/fast] Error 2
+
+
+Determining if the function snappy_compress exists in the snappy failed with the following output:
+Change Dir: /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5134c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5134c.dir/build.make CMakeFiles/cmTC_5134c.dir/build
+make[1]: Entering directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5134c.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=snappy_compress   -std=c11 -o CMakeFiles/cmTC_5134c.dir/CheckFunctionExists.c.o   -c /usr/local/share/cmake-3.9/Modules/CheckFunctionExists.c
+Linking C executable cmTC_5134c
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5134c.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=snappy_compress    CMakeFiles/cmTC_5134c.dir/CheckFunctionExists.c.o  -o cmTC_5134c -lsnappy 
+/usr/bin/ld: 找不到 -lsnappy
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_5134c.dir/build.make:97: recipe for target 'cmTC_5134c' failed
+make[1]: *** [cmTC_5134c] Error 1
+make[1]: Leaving directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_5134c/fast' failed
+make: *** [cmTC_5134c/fast] Error 2
+
+
+Determining if the function malloc exists in the tcmalloc failed with the following output:
+Change Dir: /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5e2df/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5e2df.dir/build.make CMakeFiles/cmTC_5e2df.dir/build
+make[1]: Entering directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5e2df.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=malloc   -std=c11 -o CMakeFiles/cmTC_5e2df.dir/CheckFunctionExists.c.o   -c /usr/local/share/cmake-3.9/Modules/CheckFunctionExists.c
+<command-line>:0:23: warning: conflicting types for built-in function ‘malloc’
+/usr/local/share/cmake-3.9/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS(void);
+   ^
+Linking C executable cmTC_5e2df
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5e2df.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=malloc    CMakeFiles/cmTC_5e2df.dir/CheckFunctionExists.c.o  -o cmTC_5e2df -ltcmalloc 
+/usr/bin/ld: 找不到 -ltcmalloc
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_5e2df.dir/build.make:97: recipe for target 'cmTC_5e2df' failed
+make[1]: *** [cmTC_5e2df] Error 1
+make[1]: Leaving directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_5e2df/fast' failed
+make: *** [cmTC_5e2df/fast] Error 2
+
+
+Determining if the F_FULLFSYNC exist failed with the following output:
+Change Dir: /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_403f4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_403f4.dir/build.make CMakeFiles/cmTC_403f4.dir/build
+make[1]: Entering directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_403f4.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_403f4.dir/CheckSymbolExists.cxx.o -c /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘F_FULLFSYNC’ was not declared in this scope
+   return ((int*)(&F_FULLFSYNC))[argc];
+                   ^
+CMakeFiles/cmTC_403f4.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_403f4.dir/CheckSymbolExists.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_403f4.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_403f4/fast' failed
+make: *** [cmTC_403f4/fast] Error 2
+
+File /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <fcntl.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef F_FULLFSYNC
+  return ((int*)(&F_FULLFSYNC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Performing C++ SOURCE FILE Test HAVE_CLANG_THREAD_SAFETY failed with the following output:
+Change Dir: /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_84756/fast"
+/usr/bin/make -f CMakeFiles/cmTC_84756.dir/build.make CMakeFiles/cmTC_84756.dir/build
+make[1]: Entering directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_84756.dir/src.cxx.o
+/usr/bin/c++    -DHAVE_CLANG_THREAD_SAFETY -Werror   -std=c++11 -o CMakeFiles/cmTC_84756.dir/src.cxx.o -c /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp/src.cxx
+/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp/src.cxx:2:34: error: ‘lockable’ attribute directive ignored [-Werror=attributes]
+ struct __attribute__((lockable)) Lock {
+                                  ^
+/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp/src.cxx:3:59: error: ‘exclusive_lock_function’ attribute directive ignored [-Werror=attributes]
+   void Acquire() __attribute__((exclusive_lock_function()));
+                                                           ^
+/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp/src.cxx:4:51: error: ‘unlock_function’ attribute directive ignored [-Werror=attributes]
+   void Release() __attribute__((unlock_function()));
+                                                   ^
+/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp/src.cxx:8:46: error: ‘guarded_by’ attribute directive ignored [-Werror=attributes]
+   int data_ __attribute__((guarded_by(lock_)));
+                                              ^
+cc1plus: all warnings being treated as errors
+CMakeFiles/cmTC_84756.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_84756.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_84756.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_84756/fast' failed
+make: *** [cmTC_84756/fast] Error 2
+
+Source file was:
+
+struct __attribute__((lockable)) Lock {
+  void Acquire() __attribute__((exclusive_lock_function()));
+  void Release() __attribute__((unlock_function()));
+};
+struct ThreadSafeType {
+  Lock lock_;
+  int data_ __attribute__((guarded_by(lock_)));
+};
+int main() { return 0; }
+
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2751c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2751c.dir/build.make CMakeFiles/cmTC_2751c.dir/build
+make[1]: Entering directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2751c.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_2751c.dir/CheckSymbolExists.c.o   -c /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_2751c
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2751c.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_2751c.dir/CheckSymbolExists.c.o  -o cmTC_2751c 
+CMakeFiles/cmTC_2751c.dir/CheckSymbolExists.c.o：在函数‘main’中：
+CheckSymbolExists.c:(.text+0x16)：对‘pthread_create’未定义的引用
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_2751c.dir/build.make:97: recipe for target 'cmTC_2751c' failed
+make[1]: *** [cmTC_2751c] Error 1
+make[1]: Leaving directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_2751c/fast' failed
+make: *** [cmTC_2751c/fast] Error 2
+
+File /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b152b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b152b.dir/build.make CMakeFiles/cmTC_b152b.dir/build
+make[1]: Entering directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b152b.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -std=c11 -o CMakeFiles/cmTC_b152b.dir/CheckFunctionExists.c.o   -c /usr/local/share/cmake-3.9/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b152b
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b152b.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_b152b.dir/CheckFunctionExists.c.o  -o cmTC_b152b -lpthreads 
+/usr/bin/ld: 找不到 -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_b152b.dir/build.make:97: recipe for target 'cmTC_b152b' failed
+make[1]: *** [cmTC_b152b] Error 1
+make[1]: Leaving directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_b152b/fast' failed
+make: *** [cmTC_b152b/fast] Error 2
+
+
+Determining if the function sqlite3_open exists in the sqlite3 failed with the following output:
+Change Dir: /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_7135d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_7135d.dir/build.make CMakeFiles/cmTC_7135d.dir/build
+make[1]: Entering directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7135d.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sqlite3_open   -std=c11 -o CMakeFiles/cmTC_7135d.dir/CheckFunctionExists.c.o   -c /usr/local/share/cmake-3.9/Modules/CheckFunctionExists.c
+Linking C executable cmTC_7135d
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7135d.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sqlite3_open    CMakeFiles/cmTC_7135d.dir/CheckFunctionExists.c.o  -o cmTC_7135d -lsqlite3 
+/usr/bin/ld: 找不到 -lsqlite3
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_7135d.dir/build.make:97: recipe for target 'cmTC_7135d' failed
+make[1]: *** [cmTC_7135d] Error 1
+make[1]: Leaving directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_7135d/fast' failed
+make: *** [cmTC_7135d/fast] Error 2
+
+
+Performing C++ SOURCE FILE Test HAVE_KYOTOCABINET failed with the following output:
+Change Dir: /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_0571d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0571d.dir/build.make CMakeFiles/cmTC_0571d.dir/build
+make[1]: Entering directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0571d.dir/src.cxx.o
+/usr/bin/c++    -DHAVE_KYOTOCABINET   -std=c++11 -o CMakeFiles/cmTC_0571d.dir/src.cxx.o -c /home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp/src.cxx
+/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp/src.cxx:2:22: fatal error: kcpolydb.h: 没有那个文件或目录
+compilation terminated.
+CMakeFiles/cmTC_0571d.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_0571d.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_0571d.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/home/meggie/文档/leveldb-multimem-dram/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_0571d/fast' failed
+make: *** [cmTC_0571d/fast] Error 2
+
+Source file was:
+
+#include <kcpolydb.h>
+
+int main() {
+  kyotocabinet::TreeDB* db = new kyotocabinet::TreeDB();
+  delete db;
+  return 0;
+}
+  
