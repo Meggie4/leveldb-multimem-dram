@@ -48,9 +48,14 @@ NUMTHREAD=1
 #BENCHMARKS="loaduniform100_15000k,readuniform100_15000k"
 #BENCHMARKS="loaduniform100_20000k,readuniform100_20000k"
 #BENCHMARKS="loaduniform100_25000k,readuniform100_25000k"
-BENCHMARKS="loaduniform100_30000k,readuniform100_30000k"
+#BENCHMARKS="loaduniform100_30000k,readuniform100_30000k"
 
+#BENCHMARKS="loaduniform100_5000k"
+#BENCHMARKS="loaduniform100_10000k"
+#BENCHMARKS="loaduniform100_15000k"
 #BENCHMARKS="loaduniform100_20000k"
+#BENCHMARKS="loaduniform100_25000k"
+BENCHMARKS="loaduniform100_30000k"
 
 #BENCHMARKS="customedworkloaduniformwritemid"
 
