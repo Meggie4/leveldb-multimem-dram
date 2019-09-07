@@ -180,6 +180,9 @@ DBImpl::DBImpl(const Options& raw_options, const std::string& dbname)
   mem_group_.resize(memtable_size_);
   imm_group_.resize(memtable_size_);
   has_imm_group_.resize(memtable_size_);
+  for(int i = 0; i < memtable_size_; i++) {
+    has_imm_group_[i].Release_Store(nullptr);
+  }
   mem_allocated_ = false;
   compact_thpool_ = new ThreadPool(memtable_size_, "compact_thpool");
   batch_thpool_ = new ThreadPool(memtable_size_, "batch_thpool");
@@ -1545,11 +1548,12 @@ bool DBImpl::NeedsFlush(std::vector<int>& flush_index) {
         return true;
 }
 
-inline bool DBImpl::NeedsWait(int flush_size) {
-    if(flush_size > remaining_mems_)
-        return true;
-    else 
-        return false;
+inline bool DBImpl::NeedsWait(std::vector<int>& flush_index) {
+   for(int i = 0; i < flush_index.size(); i++) {
+     if(has_imm_group_[flush_index[i]].NoBarrier_Load() != nullptr)
+      return true;
+   }
+   return false;
 }
 
 void DBImpl::CreateNewMemtable(std::vector<int>& flush_index) {
@@ -1739,7 +1743,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
       break;
     //////////////meggie
     //} else if (imm_ != nullptr) {
-    } else if (NeedsWait(flush_index.size())) {
+    } else if (NeedsWait(flush_index)) {
     //////////////meggie
       // We have filled up the current iemtable, but the previous
       // one is still being compacted, so we wait.

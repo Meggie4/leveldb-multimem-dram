@@ -168,7 +168,7 @@ class DBImpl : public DB {
   ThreadPool* batch_thpool_;
   MultiWriteBatch* tmp_mbatch_ GUARDED_BY(mutex_);
   bool NeedsFlush(std::vector<int>& flush_index);
-  bool NeedsWait(int flush_size);
+  bool NeedsWait(std::vector<int>& flush_index);
   bool NeedsCompaction();
   void CreateNewMemtable(std::vector<int>& flush_index);
   static void ParallelCompactMemTableWrapper(void* args);

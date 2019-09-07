@@ -43,7 +43,7 @@ NUMTHREAD=1
 #BENCHMARKS="customedworkloadzip080_4kwritelarge"
 #BENCHMARKS="customedworkloaduniform_4kwritelarge"
 
-#BENCHMARKS="loaduniform100_5000k,readuniform100_5000k"
+BENCHMARKS="loaduniform100_5000k,readuniform100_5000k"
 #BENCHMARKS="loaduniform100_10000k,readuniform100_10000k"
 #BENCHMARKS="loaduniform100_15000k,readuniform100_15000k"
 #BENCHMARKS="loaduniform100_20000k,readuniform100_20000k"
@@ -55,7 +55,7 @@ NUMTHREAD=1
 #BENCHMARKS="loaduniform100_15000k"
 #BENCHMARKS="loaduniform100_20000k"
 #BENCHMARKS="loaduniform100_25000k"
-BENCHMARKS="loaduniform100_30000k"
+#BENCHMARKS="loaduniform100_30000k"
 
 #BENCHMARKS="customedworkloaduniformwritemid"
 
